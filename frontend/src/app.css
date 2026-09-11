@@ -1,0 +1,454 @@
+/* ---------- Shell layout ---------- */
+
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell__body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.shell__main {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.boot-error {
+  max-width: 480px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  text-align: left;
+}
+
+.boot-error code {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  padding: 0.1em 0.4em;
+  font-family: var(--font-body);
+}
+
+/* ---------- Sidebar / plot index ---------- */
+
+.plot-index {
+  width: 260px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--line-strong);
+  padding: 1.75rem 1.25rem;
+  background: var(--paper-2);
+}
+
+.plot-index__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 2.25rem;
+}
+
+.plot-index__mark {
+  font-size: 1.4rem;
+  color: var(--canopy);
+}
+
+.plot-index__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.plot-index__subtitle {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.03em;
+}
+
+.plot-index__list-label {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.plot-index__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.plot-index__item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  padding: 0.6rem 0.6rem 0.6rem 0.75rem;
+  color: var(--ink);
+}
+
+.plot-index__item:hover {
+  background: rgba(63, 107, 59, 0.08);
+}
+
+.plot-index__item--active {
+  border-left-color: var(--canopy);
+  background: rgba(63, 107, 59, 0.1);
+}
+
+.plot-index__item-name {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+}
+
+.plot-index__item-meta {
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  margin-top: 0.15rem;
+}
+
+.plot-index__empty {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  padding: 0.5rem 0.6rem;
+}
+
+/* ---------- Entry (twin detail) ---------- */
+
+.entry {
+  max-width: 760px;
+  padding: 2.25rem 2.5rem 3rem;
+}
+
+.entry__header h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.entry__subtitle {
+  color: var(--ink-soft);
+  margin: 0.25rem 0 0;
+  font-size: 0.88rem;
+}
+
+.entry__section {
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.entry__section h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin: 0 0 0.9rem;
+}
+
+.entry-row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.entry-row-header h3 {
+  margin: 0;
+}
+
+/* Hero score */
+
+.entry__hero {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.hero-score {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 180px;
+}
+
+.hero-score__eyebrow {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.hero-score__value {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  line-height: 1;
+  color: var(--canopy);
+}
+
+.hero-score__scale {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  margin-left: 0.2rem;
+}
+
+.hero-score__trend {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.6rem;
+}
+
+.hero-chart {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Component bars */
+
+.component-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.component-bar__labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  margin-bottom: 0.3rem;
+}
+
+.component-bar__track {
+  height: 6px;
+  background: var(--line);
+  border-radius: 0;
+}
+
+.component-bar__fill {
+  height: 100%;
+}
+
+/* Readouts */
+
+.entry__readouts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.readout__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+  margin: 0;
+}
+
+.readout__grid dt {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+
+.readout__grid dd {
+  margin: 0.1rem 0 0;
+  font-size: 1rem;
+}
+
+.empty-note {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+.error-note {
+  color: var(--rust);
+  font-size: 0.85rem;
+}
+
+/* Buttons */
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--sky);
+  font-size: 0.82rem;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.btn-outline {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  font-size: 0.78rem;
+  padding: 0.4rem 0.8rem;
+  margin-top: 0.4rem;
+}
+
+.btn-outline:hover {
+  border-color: var(--canopy);
+  color: var(--canopy);
+}
+
+/* Disease scan */
+
+.scan-result {
+  border-left: 3px solid var(--canopy);
+  padding: 0.6rem 0.9rem;
+  background: rgba(63, 107, 59, 0.06);
+}
+
+.scan-result--alert {
+  border-left-color: var(--rust);
+  background: rgba(168, 84, 38, 0.08);
+}
+
+.scan-result__label {
+  font-family: var(--font-display);
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.scan-result__action {
+  margin: 0.35rem 0 0;
+  font-size: 0.87rem;
+  color: var(--ink-soft);
+}
+
+/* Field agent panel */
+
+.agent-panel__hint {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.85rem;
+}
+
+.lang-select {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  background: var(--paper-2);
+  border: 1px solid var(--line-strong);
+  padding: 0.25rem 0.5rem;
+}
+
+.agent-panel__exchange {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.agent-turn__q {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.agent-turn__q::before {
+  content: "You — ";
+}
+
+.agent-turn__a {
+  font-size: 0.92rem;
+  margin: 0.2rem 0 0;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--canopy-dim);
+}
+
+.agent-panel__form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.agent-panel__form input {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--line-strong);
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.agent-panel__form button {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  background: var(--ink);
+  color: var(--paper-2);
+  border: none;
+}
+
+.agent-panel__form button:disabled {
+  opacity: 0.5;
+}
+
+/* ---------- Federation strip ---------- */
+
+.federation-strip {
+  border-top: 1px solid var(--line-strong);
+  background: var(--paper-2);
+  padding: 0.7rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.78rem;
+  flex-wrap: wrap;
+}
+
+.federation-strip__label {
+  color: var(--ink-soft);
+  flex-shrink: 0;
+}
+
+.federation-strip__nodes {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.federation-node {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.federation-node__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sky);
+  display: inline-block;
+}
+
+.federation-node__count {
+  color: var(--ink-soft);
+}
+
+.federation-strip__empty {
+  color: var(--ink-soft);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 720px) {
+  .shell__body {
+    flex-direction: column;
+  }
+  .plot-index {
+    width: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .entry {
+    padding: 1.5rem;
+  }
+  .entry__readouts {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,91 @@
+/* ==========================================================================
+   AgriN Twin — "Field Ledger" design system
+
+   Design plan:
+   - Subject: a working record of living farmland — satellite passes, soil
+     sensors, disease scans — kept the way a field officer keeps a ledger,
+     not a SaaS analytics product. Structure reads like an index + entries,
+     not a grid of identical cards.
+   - Color: soil, canopy, and sky — the three data sources the twin fuses —
+     rendered as ink-on-paper rather than glossy UI chrome.
+       --paper:      #EFE6D3  (base — warm unbleached paper, not cream-default)
+       --paper-2:    #F8F2E5  (panel surface, slightly lighter)
+       --ink:        #2B2118  (soil-brown near-black, not pure #111)
+       --ink-soft:   #6B5D4C  (secondary text — faded ink)
+       --canopy:     #3F6B3B  (vegetation green — vigor, healthy signals)
+       --canopy-dim: #A9BB9E  (muted green for chart gridlines/fills)
+       --sky:        #2F5D73  (satellite/data blue — NDVI, federation)
+       --rust:       #A85426  (soil-rust — alerts, disease, attention)
+       --line:       rgba(43, 33, 24, 0.16)  (hairline rule color)
+   - Type: Fraunces (optical-size serif, organic/almanac character) for
+     headlines and plot names; Space Grotesk for labels, numbers, UI chrome
+     — geometric contrast against the serif, with tabular figures for data.
+   - Layout: left ledger index (plot list) + right entry (twin detail).
+     Left-aligned throughout; hairline rules divide sections instead of
+     card shadows; numbers get generous tabular alignment.
+   ========================================================================== */
+
+:root {
+  --paper: #efe6d3;
+  --paper-2: #f8f2e5;
+  --ink: #2b2118;
+  --ink-soft: #6b5d4c;
+  --canopy: #3f6b3b;
+  --canopy-dim: #a9bb9e;
+  --sky: #2f5d73;
+  --rust: #a85426;
+  --line: rgba(43, 33, 24, 0.16);
+  --line-strong: rgba(43, 33, 24, 0.32);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--canopy-dim);
+}
+
+:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 2px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

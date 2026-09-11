@@ -27,6 +27,16 @@ problem statement, not just a claim on a slide.
 See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full design
 rationale and system diagram.
 
+## Live demo
+
+- **Dashboard:** https://agrintwin-2t8z083f1-rikresearch2-tech.vercel.app
+- **API docs:** https://agrintwin.onrender.com/docs
+
+> The backend runs on Render's free tier, which spins down after 15
+> minutes of no traffic. If the dashboard looks stuck loading on first
+> visit, that's the backend waking up (~30-60 seconds) — reload after a
+> moment and it'll be responsive for the rest of the session.
+
 ## Repository layout
 
 ```

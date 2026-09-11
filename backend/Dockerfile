@@ -17,4 +17,14 @@ EXPOSE 8000
 
 ENV ENV=production
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+# --workers 1: this app loads a TensorFlow model into memory at startup
+# (see app/main.py's auto-seed + app/services/disease_service.py's model
+# load). Multiple workers each load their own full copy — on a
+# memory-constrained host (e.g. Render's free 512MB tier) that risks OOM,
+# and it also causes a startup race where every worker's auto-seed check
+# runs concurrently against an empty database (seen in production: two
+# workers both saw "empty" and both tried to insert the same demo
+# farmers, one hit a UNIQUE constraint error). Scale via multiple
+# container instances behind a load balancer instead of in-process
+# workers if you need more throughput later.
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]

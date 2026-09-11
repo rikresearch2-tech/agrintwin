@@ -2,6 +2,7 @@ import logging
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.exc import IntegrityError
 
 from app.api import disease, federation, iot, plots, satellite, soil, voice
 from app.core.config import get_settings
@@ -25,6 +26,14 @@ def _seed_if_empty():
     someone SSHing in to run seed_demo_data.py manually after deploy.
     A non-empty database (local dev after you've already seeded, or a
     redeploy with a persisted volume) is left untouched.
+
+    This is designed to run behind a SINGLE worker process (see the
+    Dockerfile's --workers 1 and its comment for why). If it's ever run
+    with multiple workers, two can both see an empty database and race
+    to insert the same demo farmers — SQLite's UNIQUE constraint on
+    phone_number then rejects the loser, which is caught below as a
+    benign, expected outcome (the winner's seed already succeeded)
+    rather than a real failure.
     """
     db = SessionLocal()
     try:
@@ -34,6 +43,11 @@ def _seed_if_empty():
         from seed_demo_data import run as seed_run
 
         seed_run()
+    except IntegrityError:
+        logger.info(
+            "Auto-seed hit a UNIQUE constraint — another worker process already "
+            "seeded the database concurrently. This is expected/benign, not an error."
+        )
     except Exception as exc:  # noqa: BLE001 — never block app startup on seed failure
         logger.error("Auto-seed failed (app will still start): %s", exc)
     finally:

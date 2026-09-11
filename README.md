@@ -29,7 +29,7 @@ rationale and system diagram.
 
 ## Live demo
 
-- **Dashboard:** https://agrintwin-2t8z083f1-rikresearch2-tech.vercel.app
+- **Dashboard:** https://agrintwin.vercel.app/
 - **API docs:** https://agrintwin.onrender.com/docs
 
 > The backend runs on Render's free tier, which spins down after 15
